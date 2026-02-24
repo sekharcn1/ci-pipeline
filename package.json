@@ -1,0 +1,19 @@
+{
+  "name": "ci-pipeline",
+  "version": "1.0.0",
+  "description": "CI Pipeline App with multi-stage Docker builds",
+  "main": "app.js",
+  "scripts": {
+    "start": "node app.js",
+    "test": "jest --detectOpenHandles --forceExit"
+  },
+  "dependencies": {
+    "express": "^4.21.0",
+    "helmet": "^8.0.0",
+    "compression": "^1.7.5"
+  },
+  "devDependencies": {
+    "jest": "^29.7.0",
+    "supertest": "^7.0.0"
+  }
+}

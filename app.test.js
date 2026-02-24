@@ -1,3 +1,5 @@
+process.env.NODE_ENV = "test";
+
 const request = require("supertest");
 const app = require("./app");
 
@@ -13,5 +15,12 @@ describe("CI Pipeline App", () => {
     expect(res.status).toBe(200);
     expect(res.body.status).toBe("healthy");
     expect(res.body.version).toBeDefined();
+  });
+
+  test("GET /stats returns visits count", async () => {
+    const res = await request(app).get("/stats");
+    expect(res.status).toBe(200);
+    expect(res.body).toHaveProperty("visits");
+    expect(res.body.visits).toBe(0);
   });
 });

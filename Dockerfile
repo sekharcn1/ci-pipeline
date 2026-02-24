@@ -14,7 +14,8 @@ RUN npm ci
 # Copy application source
 COPY app.js app.test.js ./
 
-# Run tests inside the build stage
+# Run tests inside the build stage (skip Redis in tests)
+ENV NODE_ENV=test
 RUN npm test
 
 # ============================================
@@ -49,6 +50,8 @@ COPY app.js package.json ./
 RUN chown -R appuser:appgroup /app
 
 USER appuser
+
+ENV NODE_ENV=production
 
 EXPOSE 3000
 
